@@ -58,6 +58,7 @@ body {
   margin: 0;
   padding: 0;
   user-select: none;
+  background : red;
 }
 
 .app-details {
