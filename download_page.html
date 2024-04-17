@@ -70,16 +70,8 @@
 
 </head>
 <body>
-  <div class="app-details">
 
-    <div class="app-download-page">
-        <div class="download-page-button">
-            <h2>Démarrage du téléchargement</h2>
-            <div id="timerCircle"><span id="timer">10</span></div>
-            <p id="timerFail">
-                Si le téléchargement ne démarre pas automatiquement cliqué <a id="timerLink" title="VF Toons Apk" href="https://www.dropbox.com/scl/fi/rvgryb5gpgumyuwf3osst/VF-Toons.apk?rlkey=os3obfajd6pkflgrqabvvk2gq&dl=1" download>&nbsp; ici</a></p>
-        </div>
-    </div>
+  <div class="app-details">
 
     <div class="app-description">
         <h2>À propos de l'appli</h2>
@@ -93,6 +85,15 @@
           occidentaux en passant par les mangas japonais, notre bibliothèque regorge de trésors inestimables, soigneusement
            sélectionnés pour vous garantir des heures de lecture inoubliables.
         </p>
+      </div>
+      
+      <div class="app-download-page">
+      <div class="download-page-button">
+      <h2>Préparation du téléchargement</h2>
+      <div id="timerCircle"><span id="timer">10</span></div>
+      <p id="timerFail">
+      Le fichier du téléchargement est prêt cliqué <a id="timerLink" title="VF Toons Apk" href="download_ready.html" >&nbsp; ici</a></p>
+      </div>
       </div>
 
     <div class="app-screenshots">
@@ -139,13 +140,13 @@
 
             } else {
                 timerCircle.style.display = "none";
-                timerLink.click();
+                window.location.href = "download_ready.html";
 
             }
         }
 
         // Définir un intervalle pour exécuter la fonction `mettreAJour` toutes les 1000 millisecondes (1 seconde)
-        setInterval(mettreAJour, 1150);
+        setInterval(mettreAJour, 1000);
 
 
     document.addEventListener('DOMContentLoaded', function () {

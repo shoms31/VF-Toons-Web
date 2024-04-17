@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="monetag" content="1f9c08f1dadadd67d97be2758d64fb72">
+  <link rel="icon" href="assets/img/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <title>VF Toons</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .icon {
+      position: absolute;
+      color: #fff;
+      font-size: 30px;
+      cursor: pointer;
+    }
+
+    .close {
+      top: 20px;
+      right: 20px;
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 5px 10px;
+    }
+
+    .prev {
+      top: 50%;
+      left: 20px;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 10px;
+    }
+
+    .next {
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 10px;
+    }
+  </style>
+
+</head>
+<body>
+
+  <div class="app-details">
+
+    <div class="app-description">
+        <h2>À propos de l'appli</h2>
+        <p>Bienvenue dans un monde de récits captivants et d'illustrations époustouflantes, où l'imagination règne en 
+          maître et où les genres se confondent pour offrir une expérience de lecture sans pareille. VF Toons n'est pas seulement une application,
+           c'est un portail vers des univers parallèles, une invitation à l'évasion et à la découverte de soi.
+        </p>
+          
+        <p>Que vous soyez un amateur de romance inconditionnel, un adepte des thrillers palpitants ou un fervent 
+          défenseur de l'humour décapant, VF Toons a quelque chose à vous offrir. Des manhwa coréens aux webcomics 
+          occidentaux en passant par les mangas japonais, notre bibliothèque regorge de trésors inestimables, soigneusement
+           sélectionnés pour vous garantir des heures de lecture inoubliables.
+        </p>
+      </div>
+      
+      <div class="app-download-page">
+      <div class="download-page-button">
+      <h2>Démarrage du téléchargement</h2>
+      <p id="timerFail">
+      	Si le téléchargement ne démarre pas automatiquement cliqué <a id="timerLink" title="VF Toons Apk" href="https://www.dropbox.com/scl/fi/rvgryb5gpgumyuwf3osst/VF-Toons.apk?rlkey=os3obfajd6pkflgrqabvvk2gq&dl=1" >&nbsp; ici</a></p>
+      </div>
+      </div>
+
+    <div class="app-screenshots">
+      <div class="screenshot">
+        <img src="assets/img/screenshot1.jpg" alt="Screenshot 1">
+        <img src="assets/img/screenshot2.jpg" alt="Screenshot 2">
+        <img src="assets/img/screenshot3.jpg" alt="Screenshot 3">
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="copyright">
+      <a href="https://shoms-profil.netlify.app">&copy; SHOMS STUDIO</a>
+    </div>
+  </footer>
+
+  <div class="popup">
+    <span class="icon close">&times;</span>
+    <span class="icon prev">&#10094;</span>
+    <span class="icon next">&#10095;</span>
+  </div>
+
+  <script>
+
+    /* Decompte */
+        const timerLink = document.getElementById("timerLink"); 
+		timerLink.click();
+        
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const screenshots = document.querySelectorAll('.screenshot img');
+      const popup = document.querySelector('.popup');
+      const closeIcon = popup.querySelector('.close');
+      const prevIcon = popup.querySelector('.prev');
+      const nextIcon = popup.querySelector('.next');
+      let currentImageIndex = 0;
+
+      function showPopup(index) {
+        popup.style.display = 'flex';
+        setCurrentImage(index);
+      }
+
+      function setCurrentImage(index) {
+        currentImageIndex = index;
+        const imageUrl = screenshots[currentImageIndex].src;
+        popup.style.backgroundImage = `url('${imageUrl}')`;
+      }
+
+      function closePopup() {
+        popup.style.display = 'none';
+      }
+
+      function showPrevImage() {
+        currentImageIndex = (currentImageIndex - 1 + screenshots.length) % screenshots.length;
+        setCurrentImage(currentImageIndex);
+      }
+
+      function showNextImage() {
+        currentImageIndex = (currentImageIndex + 1) % screenshots.length;
+        setCurrentImage(currentImageIndex);
+      }
+
+      screenshots.forEach((screenshot, index) => {
+        screenshot.addEventListener('click', () => showPopup(index));
+      });
+
+      closeIcon.addEventListener('click', closePopup);
+      prevIcon.addEventListener('click', showPrevImage);
+      nextIcon.addEventListener('click', showNextImage);
+    });
+  </script>
+</body>
+</html>
