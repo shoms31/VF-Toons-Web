@@ -190,6 +190,16 @@ body {
   border-radius: 10px;
 }
 
+#faq li a{
+	color:var(--dark);
+}
+
+#app a{
+  text-decoration: none;
+  font-weight: bold;
+  color: var(--pink);
+}
+
 .copyright{
   display: flex;
   justify-content: center;
@@ -370,9 +380,13 @@ body {
     font-size: 1.1rem;
   }
 
-  .app-description p {
+  .app-description p,#faq,#app,#fix{
     text-align: justify;
     font-size: .8rem;
+  }
+  
+  #faq{
+  	font-size:.8rem;
   }
 
   .app-screenshots {
